@@ -50,6 +50,7 @@ public class AppConfig {
           @Override
           public void addCorsMappings(CorsRegistry registry) {
               registry.addMapping("/login").allowedOrigins("http://localhost:4200");
+              registry.addMapping("/register").allowedOrigins("http://localhost:4200");
           }
       };
   }

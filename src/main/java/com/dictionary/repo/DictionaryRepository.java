@@ -12,4 +12,8 @@ public interface DictionaryRepository
     
     List<Word> getWords();
     
+    List<User> getUsers();
+    
+    void register(UserInfo user);
+    
 }

@@ -11,4 +11,8 @@ public interface DictionaryService
     User login (UserInfo user);
     
     List<Word> getWords();
+    
+    List<User> getUser();
+    
+    void register (UserInfo user);
 }

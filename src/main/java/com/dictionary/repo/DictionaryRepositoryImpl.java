@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Objects;
+import java.util.UUID;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -36,7 +37,7 @@ public class DictionaryRepositoryImpl implements DictionaryRepository
                                                       public User mapRow(ResultSet rs, int rowNum)
                                                           throws SQLException
                                                       {
-                                                          User user = new User(rs.getString("username"), rs.getString("password"), rs.getString("role"), rs.getString("id"));
+                                                          User user = new User(rs.getString("username"), rs.getString("password"), rs.getString("role"), rs.getString("id") , rs.getString("pending"));
 
                                                           return user;
                                                       }
@@ -67,4 +68,36 @@ public class DictionaryRepositoryImpl implements DictionaryRepository
 
         return words;
     }
+
+	@Override
+	public List<User> getUsers() {
+		
+		String sql = "SELECT * FROM login";
+
+        List<User> users = jdbcTemplate.query(sql,
+                                                  new RowMapper<User>()
+                                                  {
+
+                                                      public User mapRow(ResultSet rs, int rowNum)
+                                                          throws SQLException
+                                                      {
+                                                          User user = new User(rs.getString("username"), rs.getString("password"), rs.getString("role"), rs.getString("id") , rs.getString("pending"));
+
+                                                          return user;
+                                                      }
+
+                                                  });
+
+        return users;
+	}
+
+	public void register(UserInfo user) {
+		
+		String sql = "INSERT INTO login (id,username, password, role , pending)"
+				+ " VALUES (?,?,?,?,?)";
+
+		jdbcTemplate.update(sql, UUID.randomUUID().toString(), user.getUsername(), user.getPassword(), "USER" , "true");
+		
+		
+	}
 }

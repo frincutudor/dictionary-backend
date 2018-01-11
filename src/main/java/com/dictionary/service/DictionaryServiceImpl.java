@@ -28,4 +28,16 @@ public class DictionaryServiceImpl implements DictionaryService
     {
         return dictionaryRepository.getWords();
     }
+
+	@Override
+	public List<User> getUser() {
+	
+		return dictionaryRepository.getUsers();
+	}
+
+	@Override
+	public void register(UserInfo user) {
+
+		 dictionaryRepository.register(user);
+	}
 }

@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Implementation-Title: com.dictionary
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: tufr261616
+Built-By: frincutudor
 Implementation-Vendor-Id: com.dictionary
-Build-Jdk: 1.8.0_111
+Build-Jdk: 1.8.0_112
 Implementation-URL: http://projects.spring.io/spring-boot/com.dictiona
  ry/
 Created-By: Maven Integration for Eclipse

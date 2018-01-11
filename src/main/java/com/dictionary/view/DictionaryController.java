@@ -35,4 +35,17 @@ public class DictionaryController
       
         return new ResponseEntity<List<Word>>(dictionaryService.getWords(),HttpStatus.OK);
     }
+    
+    @RequestMapping(value = "/users", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public ResponseEntity<?> getUsers() {
+      
+        return new ResponseEntity<List<User>>(dictionaryService.getUser(),HttpStatus.OK);
+    }
+    
+    @RequestMapping(value = "/register", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public ResponseEntity<?> register(@RequestBody UserInfo user) {
+    	dictionaryService.register(user);
+        return  new ResponseEntity<HttpStatus>(HttpStatus.CREATED);
+        
+    }
 }
